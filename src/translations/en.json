@@ -33,6 +33,7 @@
   "AuthenticationPage.verifyEmailTitle": "{name}, check your email inbox to verify your email address",
   "Avatar.bannedUserDisplayName": "Banned user",
   "Avatar.deletedUserDisplayName": "Deleted user",
+  "AverageRating.reviewCount": "({count, plural, one {# review} other {# reviews}})",
   "BookingDateRangeFilter.labelPlain": "Dates",
   "BookingDateRangeFilter.labelPopup": "Dates",
   "BookingDateRangeFilter.labelSelectedPlain": "{dates}",

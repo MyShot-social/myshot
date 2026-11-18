@@ -40,6 +40,7 @@ import {
   NamedLink,
   ListingCard,
   Reviews,
+  AverageRating,
   ButtonTabNavHorizontal,
   LayoutSideNavigation,
   NamedRedirect,
@@ -293,6 +294,11 @@ export const MainContent = props => {
       <H2 as="h1" className={css.desktopHeading}>
         <FormattedMessage id="ProfilePage.desktopHeading" values={{ name: displayName }} />
       </H2>
+      {hideReviews ? null : (
+        <AverageRating
+          reviews={reviews.filter(r => r.attributes.type === REVIEW_TYPE_OF_PROVIDER)}
+        />
+      )}
       {hasBio ? <p className={css.bio}>{bioWithLinks}</p> : null}
 
       {displayName ? (

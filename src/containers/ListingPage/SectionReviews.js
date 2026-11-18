@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from '../../util/reactIntl';
-import { Heading, H2, Reviews } from '../../components';
+import { Heading, H2, Reviews, AverageRating } from '../../components';
 
 import css from './ListingPage.module.css';
 
@@ -12,6 +12,7 @@ const SectionReviews = props => {
       <Heading as="h2" rootClassName={css.sectionHeadingWithExtraMargin}>
         <FormattedMessage id="ListingPage.reviewsTitle" values={{ count: reviews.length }} />
       </Heading>
+      <AverageRating reviews={reviews} />
       {fetchReviewsError ? (
         <H2 className={css.errorText}>
           <FormattedMessage id="ListingPage.reviewsError" />
