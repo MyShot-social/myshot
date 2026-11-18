@@ -91,8 +91,8 @@ export const ReviewsErrorMaybe = props => {
 
 export const MobileReviews = props => {
   const { reviews, queryReviewsError } = props;
+  // MyShot: only reviews written by customers about creatives are shown.
   const reviewsOfProvider = reviews.filter(r => r.attributes.type === REVIEW_TYPE_OF_PROVIDER);
-  const reviewsOfCustomer = reviews.filter(r => r.attributes.type === REVIEW_TYPE_OF_CUSTOMER);
   return (
     <div className={css.mobileReviews}>
       <H4 as="h2" className={css.mobileReviewsTitle}>
@@ -103,14 +103,6 @@ export const MobileReviews = props => {
       </H4>
       <ReviewsErrorMaybe queryReviewsError={queryReviewsError} />
       <Reviews reviews={reviewsOfProvider} />
-      <H4 as="h2" className={css.mobileReviewsTitle}>
-        <FormattedMessage
-          id="ProfilePage.reviewsAsACustomerTitle"
-          values={{ count: reviewsOfCustomer.length }}
-        />
-      </H4>
-      <ReviewsErrorMaybe queryReviewsError={queryReviewsError} />
-      <Reviews reviews={reviewsOfCustomer} />
     </div>
   );
 };
@@ -119,9 +111,7 @@ export const DesktopReviews = props => {
   const { reviews, queryReviewsError, userTypeRoles, intl } = props;
   const { customer: isCustomerUserType, provider: isProviderUserType } = userTypeRoles;
 
-  const initialReviewState = !isProviderUserType
-    ? REVIEW_TYPE_OF_CUSTOMER
-    : REVIEW_TYPE_OF_PROVIDER;
+  const initialReviewState = REVIEW_TYPE_OF_PROVIDER;
   const [showReviewsType, setShowReviewsType] = useState(initialReviewState);
 
   const reviewsOfProvider = reviews.filter(r => r.attributes.type === REVIEW_TYPE_OF_PROVIDER);
@@ -145,7 +135,9 @@ export const DesktopReviews = props => {
       ]
     : [];
 
-  const customerReviewsMaybe = isCustomerUserType
+  // MyShot: reviews of customers are not shown, so the "as a customer" tab is hidden.
+  const showCustomerReviews = false;
+  const customerReviewsMaybe = showCustomerReviews && isCustomerUserType
     ? [
         {
           text: (
@@ -324,7 +316,7 @@ export const MainContent = props => {
           </ul>
         </div>
       ) : null}
-      {hideReviews ? null : isMobileLayout ? (
+      {hideReviews || userTypeRoles?.provider === false ? null : isMobileLayout ? (
         <MobileReviews
           reviews={reviews}
           queryReviewsError={queryReviewsError}

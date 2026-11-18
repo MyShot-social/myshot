@@ -56,7 +56,7 @@ export const getStateDataForBookingProcess = (txInfo, processInfo) => {
         secondaryButtonProps: secondary,
       };
     })
-    .cond([states.DELIVERED, _], () => {
+    .cond([states.DELIVERED, CUSTOMER], () => {
       return {
         processName,
         processState,
@@ -65,6 +65,10 @@ export const getStateDataForBookingProcess = (txInfo, processInfo) => {
         showActionButtons: true,
         primaryButtonProps: leaveReviewProps,
       };
+    })
+    .cond([states.DELIVERED, PROVIDER], () => {
+      // MyShot: creatives don't review customers.
+      return { processName, processState, showDetailCardHeadings: true };
     })
     .cond([states.REVIEWED_BY_PROVIDER, CUSTOMER], () => {
       return {

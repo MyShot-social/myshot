@@ -255,25 +255,8 @@
     [{:fn/timepoint [:time/last-entered-state :state/delivered]}
      {:fn/period ["P14D"]}]},
    :actions [{:name :action/stripe-create-payout}]}
-  {:name :transition/review-1-by-provider,
-   :from :state/completed,
-   :to :state/reviewed-by-provider,
-   :actor :actor.role/provider,
-   :actions [{:name :action/post-review-by-provider}]}
-  {:name :transition/review-2-by-provider,
-   :from :state/reviewed-by-customer,
-   :to :state/reviewed,
-   :actor :actor.role/provider,
-   :actions
-   [{:name :action/post-review-by-provider}
-    {:name :action/publish-reviews}]}
   {:name :transition/review-1-by-customer,
    :from :state/completed,
-   :to :state/reviewed-by-customer,
-   :actor :actor.role/customer,
-   :actions [{:name :action/post-review-by-customer}]}
-  {:name :transition/review-2-by-customer,
-   :from :state/reviewed-by-provider,
    :to :state/reviewed,
    :actor :actor.role/customer,
    :actions
@@ -286,23 +269,7 @@
    {:fn/plus
     [{:fn/timepoint [:time/first-entered-state :state/completed]}
      {:fn/period ["P7D"]}]},
-   :actions []}
-  {:name :transition/expire-provider-review-period,
-   :from :state/reviewed-by-customer,
-   :to :state/reviewed,
-   :at
-   {:fn/plus
-    [{:fn/timepoint [:time/first-entered-state :state/completed]}
-     {:fn/period ["P7D"]}]},
-   :actions [{:name :action/publish-reviews}]}
-  {:name :transition/expire-customer-review-period,
-   :from :state/reviewed-by-provider,
-   :to :state/reviewed,
-   :at
-   {:fn/plus
-    [{:fn/timepoint [:time/first-entered-state :state/completed]}
-     {:fn/period ["P7D"]}]},
-   :actions [{:name :action/publish-reviews}]}],
+   :actions []}],
  :notifications
  [{:name :notification/new-quote-request,
    :on :transition/request-quote,
@@ -536,11 +503,6 @@
    :on :transition/accept-deliverable,
    :to :actor.role/customer,
    :template :negotiation-review-by-customer-wanted}
-  {:name
-   :notification/review-period-started-from-accept-deliverable-provider,
-   :on :transition/accept-deliverable,
-   :to :actor.role/provider,
-   :template :negotiation-review-by-provider-wanted}
   {:name :notification/operator-accepted-deliverable-customer,
    :on :transition/operator-accept-deliverable,
    :to :actor.role/customer,
@@ -554,11 +516,6 @@
    :on :transition/operator-accept-deliverable,
    :to :actor.role/customer,
    :template :negotiation-review-by-customer-wanted}
-  {:name
-   :notification/review-period-started-from-operator-accept-deliverable-provider,
-   :on :transition/operator-accept-deliverable,
-   :to :actor.role/provider,
-   :template :negotiation-review-by-provider-wanted}
   {:name :notification/auto-accepted-deliverable-customer,
    :on :transition/auto-accept-deliverable,
    :to :actor.role/customer,
@@ -572,24 +529,7 @@
    :on :transition/auto-accept-deliverable,
    :to :actor.role/customer,
    :template :negotiation-review-by-customer-wanted}
-  {:name
-   :notification/review-period-started-from-auto-accept-deliverable-provider,
-   :on :transition/auto-accept-deliverable,
-   :to :actor.role/provider,
-   :template :negotiation-review-by-provider-wanted}
   {:name :notification/review-by-customer-first,
    :on :transition/review-1-by-customer,
    :to :actor.role/provider,
-   :template :negotiation-review-by-other-party-unpublished}
-  {:name :notification/review-by-provider-first,
-   :on :transition/review-1-by-provider,
-   :to :actor.role/customer,
-   :template :negotiation-review-by-other-party-unpublished}
-  {:name :notification/review-by-customer-second,
-   :on :transition/review-2-by-customer,
-   :to :actor.role/provider,
-   :template :negotiation-review-by-other-party-published}
-  {:name :notification/review-by-provider-second,
-   :on :transition/review-2-by-provider,
-   :to :actor.role/customer,
    :template :negotiation-review-by-other-party-published}]}

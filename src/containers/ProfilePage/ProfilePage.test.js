@@ -186,7 +186,8 @@ describe('ProfilePage', () => {
     expect(screen.getByText('Awesome!')).toBeInTheDocument();
     expect(screen.getByText('reviewerA display name')).toBeInTheDocument();
     expect(screen.getByText('March 2024')).toBeInTheDocument();
-    expect(screen.getAllByTitle('3/5')).toHaveLength(2);
+    expect(screen.getAllByTitle('3/5')).toHaveLength(3); // 2 for the review + 1 for the average rating
+    expect(screen.getByText('3.0')).toBeInTheDocument();
   });
 });
 
