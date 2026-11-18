@@ -265,7 +265,7 @@ describe('ListingPage variants', () => {
       expect(sectionReviews.getByText('It was awesome!')).toBeInTheDocument();
       expect(sectionReviews.getByText('reviewerA display name')).toBeInTheDocument();
       expect(sectionReviews.getByText('June 2023')).toBeInTheDocument();
-      expect(sectionReviews.getAllByTitle('4/5')).toHaveLength(2);
+      expect(sectionReviews.getAllByTitle('4/5')).toHaveLength(3); // 2 for the review + 1 for the average rating
 
       // Has details provider/author title
       expect(getByRole('heading', { name: 'ListingPage.aboutProviderTitle' })).toBeInTheDocument();
@@ -320,7 +320,7 @@ describe('ListingPage variants', () => {
       expect(sectionReviews.getByText('It was awesome!')).toBeInTheDocument();
       expect(sectionReviews.getByText('reviewerA display name')).toBeInTheDocument();
       expect(sectionReviews.getByText('June 2023')).toBeInTheDocument();
-      expect(sectionReviews.getAllByTitle('4/5')).toHaveLength(2);
+      expect(sectionReviews.getAllByTitle('4/5')).toHaveLength(3); // 2 for the review + 1 for the average rating
 
       // Has details provider/author title
       expect(getByRole('heading', { name: 'ListingPage.aboutProviderTitle' })).toBeInTheDocument();

@@ -33,7 +33,7 @@ export const getStateDataForBookingProcess = (txInfo, processInfo) => {
     .cond([states.EXPIRED, _], () => {
       return { processName, processState, isFinal: true };
     })
-    .cond([states.DELIVERED, _], () => {
+    .cond([states.DELIVERED, CUSTOMER], () => {
       return { processName, processState, actionNeeded: true };
     })
     .cond([states.REVIEWED_BY_PROVIDER, CUSTOMER], () => {

@@ -155,23 +155,12 @@ export const graph = {
     [states.DELIVERED]: {
       on: {
         [transitions.EXPIRE_REVIEW_PERIOD]: states.REVIEWED,
-        [transitions.REVIEW_1_BY_CUSTOMER]: states.REVIEWED_BY_CUSTOMER,
-        [transitions.REVIEW_1_BY_PROVIDER]: states.REVIEWED_BY_PROVIDER,
+        // MyShot: only customers review, and the review is published immediately.
+        // Creatives (providers) can't review customers.
+        [transitions.REVIEW_1_BY_CUSTOMER]: states.REVIEWED,
       },
     },
 
-    [states.REVIEWED_BY_CUSTOMER]: {
-      on: {
-        [transitions.REVIEW_2_BY_PROVIDER]: states.REVIEWED,
-        [transitions.EXPIRE_PROVIDER_REVIEW_PERIOD]: states.REVIEWED,
-      },
-    },
-    [states.REVIEWED_BY_PROVIDER]: {
-      on: {
-        [transitions.REVIEW_2_BY_CUSTOMER]: states.REVIEWED,
-        [transitions.EXPIRE_CUSTOMER_REVIEW_PERIOD]: states.REVIEWED,
-      },
-    },
     [states.REVIEWED]: { type: 'final' },
   },
 };

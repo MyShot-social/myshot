@@ -356,7 +356,7 @@ export const getStateDataForNegotiationProcess = (txInfo, processInfo) => {
         primaryButtonProps: actionButtonProps(transitions.DELIVER_CHANGES, PROVIDER),
       };
     })
-    .cond([states.COMPLETED, _], () => {
+    .cond([states.COMPLETED, CUSTOMER], () => {
       return {
         ...sharedStateData,
         showDetailCardHeadings: true,
@@ -364,6 +364,10 @@ export const getStateDataForNegotiationProcess = (txInfo, processInfo) => {
         showActionButtons: true,
         primaryButtonProps: leaveReviewProps,
       };
+    })
+    .cond([states.COMPLETED, PROVIDER], () => {
+      // MyShot: creatives don't review customers.
+      return { ...sharedStateData, showDetailCardHeadings: true };
     })
     .cond([states.REVIEWED_BY_PROVIDER, CUSTOMER], () => {
       return {
