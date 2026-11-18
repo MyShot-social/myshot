@@ -33,6 +33,7 @@
   "AuthenticationPage.verifyEmailTitle": "{name}, bitte überprüfe deinen E-Mail-Posteingang, um deine E-Mail-Adresse zu bestätigen",
   "Avatar.bannedUserDisplayName": "Gesperrte:r Nutzer:in",
   "Avatar.deletedUserDisplayName": "Gelöschte:r Nutzer:in",
+  "AverageRating.reviewCount": "({count, plural, one {# Bewertung} other {# Bewertungen}})",
   "BookingDateRangeFilter.labelPlain": "Zeitraum",
   "BookingDateRangeFilter.labelPopup": "Zeitraum",
   "BookingDateRangeFilter.labelSelectedPlain": "{dates}",
