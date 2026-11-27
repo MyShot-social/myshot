@@ -30,7 +30,7 @@ describe('UserBadges', () => {
   });
 
   it('falls back to a readable label', () => {
-    render(<UserBadges metadata={{ creativebadges: ['verifiedCreative'] }} />);
-    expect(screen.getByText('Verified creative')).toBeInTheDocument();
+    render(<UserBadges metadata={{ creativebadges: ['experiencedCreative'] }} />);
+    expect(screen.getByText('Experienced creative')).toBeInTheDocument();
   });
 });

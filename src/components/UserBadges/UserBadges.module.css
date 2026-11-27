@@ -32,3 +32,24 @@
   font-size: 14px;
   line-height: 24px;
 }
+
+/* Founding creative: gold */
+.founding {
+  background-color: #fdf6e3;
+  border-color: #c9a227;
+  color: #7a5c00;
+}
+
+/* Experienced creative: brand purple */
+.experienced {
+  background-color: #f3ecfb;
+  border-color: var(--marketplaceColor);
+  color: var(--marketplaceColor);
+}
+
+/* Verified business: green */
+.verified {
+  background-color: #e8f6ee;
+  border-color: #2e8b57;
+  color: #1e5e3a;
+}

@@ -7,11 +7,11 @@ import css from './UserBadges.module.css';
 // Metadata keys (user field IDs in Console) that hold badges.
 const BADGE_FIELD_KEYS = ['creativebadges', 'businessbadges'];
 
-const BADGE_ICONS = {
-  foundingCreative: '★',
-  verifiedCreative: '✓',
-  featuredCreative: '✦',
-  verifiedBusiness: '✓',
+// Option values set in Console -> icon and colour style.
+const BADGE_STYLES = {
+  foundingCreative: { icon: '★', className: css.founding },
+  experiencedCreative: { icon: '◆', className: css.experienced },
+  verifiedBusiness: { icon: '✓', className: css.verified },
 };
 
 // "foundingCreative" -> "Founding creative"
@@ -57,9 +57,9 @@ const UserBadges = props => {
       aria-label={intl.formatMessage({ id: 'UserBadges.ariaLabel' })}
     >
       {badges.map(({ value, label }) => (
-        <li key={value} className={css.badge}>
+        <li key={value} className={classNames(css.badge, BADGE_STYLES[value]?.className)}>
           <span className={css.icon} aria-hidden="true">
-            {BADGE_ICONS[value] || '★'}
+            {BADGE_STYLES[value]?.icon || '★'}
           </span>
           {label}
         </li>
