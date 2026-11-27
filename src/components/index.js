@@ -85,6 +85,7 @@ export { default as ListingLink } from './ListingLink/ListingLink';
 export { default as PaginationLinks } from './PaginationLinks/PaginationLinks';
 export { default as ReviewRating } from './ReviewRating/ReviewRating';
 export { default as AverageRating } from './AverageRating/AverageRating';
+export { default as UserBadges } from './UserBadges/UserBadges';
 
 // Menu
 export { default as MenuItem } from './MenuItem/MenuItem';
