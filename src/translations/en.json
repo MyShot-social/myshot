@@ -1533,6 +1533,7 @@
   "TransactionPanel.sendMessagePlaceholder": "Send a message to {name}…",
   "TransactionPanel.sendingMessageNotAllowed": "This user has been removed. Sending messages to the user is no longer possible.",
   "TransactionPanel.shippingInfoHeading": "Shipping address",
+  "UserBadges.ariaLabel": "Badges",
   "UserCard.contactUser": "Contact",
   "UserCard.heading": "Hello, I'm {name}.",
   "UserCard.showFullBioLink": "more",

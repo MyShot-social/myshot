@@ -1,0 +1,55 @@
+@import '../../styles/customMediaQueries.css';
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 12px 0;
+  padding: 0;
+  list-style: none;
+
+  @media (--viewportMedium) {
+    gap: 8px;
+    margin: 0 0 16px 0;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: var(--marketplaceColorLight, #f3ecfb);
+  color: var(--marketplaceColorDark, var(--marketplaceColor));
+  border: 1px solid var(--marketplaceColor);
+  font-size: 14px;
+  font-weight: var(--fontWeightSemiBold);
+  line-height: 24px;
+}
+
+.icon {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* Founding creative: gold */
+.founding {
+  background-color: #fdf6e3;
+  border-color: #c9a227;
+  color: #7a5c00;
+}
+
+/* Experienced creative: brand purple */
+.experienced {
+  background-color: #f3ecfb;
+  border-color: var(--marketplaceColor);
+  color: var(--marketplaceColor);
+}
+
+/* Verified business: green */
+.verified {
+  background-color: #e8f6ee;
+  border-color: #2e8b57;
+  color: #1e5e3a;
+}

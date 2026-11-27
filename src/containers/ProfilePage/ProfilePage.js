@@ -41,6 +41,7 @@ import {
   ListingCard,
   Reviews,
   AverageRating,
+  UserBadges,
   ButtonTabNavHorizontal,
   LayoutSideNavigation,
   NamedRedirect,
@@ -291,6 +292,7 @@ export const MainContent = props => {
           reviews={reviews.filter(r => r.attributes.type === REVIEW_TYPE_OF_PROVIDER)}
         />
       )}
+      <UserBadges metadata={metadata} userFieldConfig={userFieldConfig} />
       {hasBio ? <p className={css.bio}>{bioWithLinks}</p> : null}
 
       {displayName ? (
